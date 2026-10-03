@@ -1,0 +1,363 @@
+/* PLUMBING_V 1 — reset tecnico canonico (Toolkit/boilerplate/plumbing.css) */
+[hidden] { display: none !important; }
+img { max-width: 100%; height: auto; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+/* ══════════ LAVAGGIO RAMMENDI INVISIBILI · Tintoria Lavanderia Gobbi — Via Negroli 45 ══════════
+   La pagina è la loro facciata e il loro cartellino: il cassonetto bianco dell'insegna con le lettere blu («LAVAGGIO» con le
+   gocce, «SECCO / ACQUA», «RAMMENDI INVISIBILI») sul muro di pietra grigia a listelli, la vetrina col tubo blu, il cartellino
+   giallo «Tintoria - Lavanderia GOBBI». I capitoli stanno sulle stoffe delle loro foto (principe di Galles antracite, lino
+   arancione, azzurro a righe delle camicie), tagliate a zigzag; le foto dentro un'imbastitura bianca. La firma è il rammendo
+   (_lri_firma.mjs). Tilt Warp per l'insegna e i titoli, Glegoo per il testo e il cartellino. */
+:root {
+  --blu: #1B63A8;
+  --blu-scuro: #124B82;
+  --blu-vetro: #8CC8F4;
+  --tubo: #2D86D4;
+  --bianco: #FFFFFF;
+  --alluminio: #AEB4BA;
+  --pietra: #D3D6D8;
+  --giallo: #F1D51F;
+  --nero: #17150F;
+  --vetro: #0F1B27;
+  --galles: #32363F;
+  --lino: #E2552C;
+  --camicia: #D5E6F5;
+  --banco: #F4F2EC;
+  --filo: #F7F4EA;
+  --inchiostro: #1B1D22;
+  --grigio: #4E545C;
+  --aperto: #2E8B4E;
+  --f-insegna: 'Tilt Warp', 'Arial Black', Impact, sans-serif;
+  --f-testo: 'Glegoo', Georgia, 'Times New Roman', serif;
+  --gutter: 16px;
+  --testata-h: 66px;
+  --muro: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='24'%3E%3Cpath d='M0 7.5H96M0 15.5H96M0 23.5H96M30.5 0V8M78.5 0V8M12.5 8V16M58.5 8V16M40.5 16V24M90.5 16V24' fill='none' stroke='%23959BA1' stroke-opacity='.5'/%3E%3C/svg%3E");
+}
+@media (min-width: 760px) { :root { --gutter: 24px; } }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; color: var(--inchiostro); font: 400 1.04rem/1.68 var(--f-testo); background: var(--banco); }
+a { color: var(--blu-scuro); }
+b, strong { font-weight: 700; }
+.salta { position: absolute; left: 12px; top: -60px; z-index: 100; padding: 10px 16px; background: #fff; color: #111; text-decoration: none; }
+.salta:focus { top: 10px; }
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+section[id] { scroll-margin-top: calc(var(--testata-h) + 14px); }
+.intero { white-space: nowrap; }
+:focus-visible { outline: 3px solid var(--blu); outline-offset: 2px; }
+.capitolo--galles :focus-visible, .capitolo--vetro :focus-visible, .vetrina :focus-visible, .piede :focus-visible { outline-color: var(--giallo); }
+/* finché i caratteri non arrivano il ripiego è più largo: una parola lunga va a capo invece di uscire (riserva-check, #233) */
+h1, h2, h3 { overflow-wrap: anywhere; }
+figure { margin: 0; }
+
+/* ── l'occhiello: maiuscole dell'insegna, con un punto d'imbastitura davanti ── */
+.occhio { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 12px; font: 400 1.02rem/1.25 var(--f-insegna); letter-spacing: .07em; text-transform: uppercase; color: var(--blu-scuro); }
+.occhio::before { content: ''; flex: none; width: 24px; height: 4px; border-radius: 2px; background: currentColor; }
+.occhio--vetro { color: var(--blu-vetro); }
+.occhio--chiaro { color: var(--filo); }
+.occhio--scuro { color: #2A1009; }
+
+/* ── la testata: l'insegna in piccolo, bianca con le lettere blu e il bordo d'alluminio del cassonetto ── */
+.testata { position: sticky; top: 0; z-index: 50; background: var(--bianco); border-bottom: 4px solid var(--alluminio); }
+.testata__dentro { display: flex; align-items: center; gap: 10px; max-width: 1280px; margin: 0 auto; padding: 6px var(--gutter); min-height: 62px; }
+.insegna { display: inline-flex; flex-direction: column; min-width: 0; text-decoration: none; line-height: 1; color: var(--blu); }
+.insegna__sopra { font: 400 .86rem/1 var(--f-insegna); letter-spacing: .12em; text-transform: uppercase; color: var(--blu); }
+.insegna__nome { margin-top: 3px; font: 400 clamp(1.05rem, .72rem + 1.5vw, 1.55rem)/.98 var(--f-insegna); letter-spacing: .01em; text-transform: uppercase; color: var(--blu); }
+.voci { display: none; }
+.testata__azioni { margin-left: auto; display: flex; align-items: center; gap: 6px; flex: none; }
+.lingue { display: flex; }
+.lingue button { min-width: 34px; min-height: 40px; padding: 1px 5px 0; border: 2px solid var(--blu); background: transparent; color: var(--blu); font: 700 .92rem var(--f-testo); cursor: pointer; }
+.lingue button + button { border-left: 0; }
+.lingue button.is-on { background: var(--blu); color: #FFFFFF; }
+.chiama { display: none; align-items: center; min-height: 42px; padding: 0 18px; border-radius: 5px; background: var(--blu); color: #FFFFFF; font: 400 1rem var(--f-insegna); letter-spacing: .06em; text-transform: uppercase; text-decoration: none; }
+.chiama:hover { background: var(--blu-scuro); }
+.burger { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; padding: 10px; border: 2px solid var(--blu); background: transparent; cursor: pointer; }
+.burger span { display: block; height: 2px; background: var(--blu); transition: transform .2s, opacity .2s; }
+.burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.menu-mobile { position: fixed; top: var(--testata-h); left: 0; right: 0; z-index: 49; max-height: calc(100vh - var(--testata-h)); overflow-y: auto; padding: 10px var(--gutter) 22px; background: var(--bianco); box-shadow: 0 12px 24px rgba(0, 0, 0, .3); }
+.menu-mobile a { display: block; padding: 13px 2px 10px; border-bottom: 2px dashed #B9CCE0; color: var(--blu); font: 400 1.35rem/1.2 var(--f-insegna); letter-spacing: .04em; text-transform: uppercase; text-decoration: none; }
+.menu-mobile__tel { display: flex !important; justify-content: center; gap: 8px; margin-top: 14px; border: 0 !important; border-radius: 5px; background: var(--blu); color: #FFFFFF !important; padding: 14px 8px 12px !important; }
+
+/* ── l'apertura: la facciata. Il muro di pietra a listelli, il cassonetto dell'insegna, la vetrina col tubo blu, il cartellino ── */
+.apertura { background-color: var(--pietra); background-image: var(--muro); }
+.apertura__dentro { max-width: 1160px; margin: 0 auto; padding: 26px var(--gutter) 54px; }
+/* il cassonetto: bianco, col profilo d'alluminio; le misure delle lettere seguono la sua larghezza (cqi) */
+.cassonetto { container-type: inline-size; margin: 0; padding: clamp(14px, 3vw, 30px) clamp(12px, 3.4vw, 40px) clamp(12px, 2.6vw, 26px); background: var(--bianco); border: clamp(4px, .7vw, 8px) solid var(--alluminio); box-shadow: 0 16px 30px rgba(40, 46, 52, .28); color: var(--blu); text-transform: uppercase; font-weight: 400; line-height: 1; }
+.cassonetto__riga { display: flex; align-items: center; gap: 3.6cqi; }
+.cassonetto__lavaggio { position: relative; display: inline-block; font: 400 15.2cqi/.86 var(--f-insegna); letter-spacing: -.005em; }
+/* le gocce: bianche, colano dall'alto delle lettere blu come sulla loro insegna. A destra si fermano al bordo della parola: oltre
+   c'era solo bianco sul bianco, ma i 2 px in più allargavano la scatola (riserva-check, 2/10) */
+.cassonetto__lavaggio::before { content: ''; position: absolute; left: -.04em; right: 0; top: .03em; height: .4em; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60' preserveAspectRatio='none'%3E%3Cpath fill='%23fff' d='M0 0H100V14C96 14 96 30 91.5 30S87 14 83 14H75C71 14 71 46 66 46S61 14 57 14H45C42 14 42 24 39 24S36 14 33 14H23C19 14 19 56 14 56S9 14 5 14H0Z'/%3E%3C/svg%3E") 0 0 / .82em 100% repeat-x; pointer-events: none; }
+.cassonetto__modi { display: inline-flex; flex-direction: column; font: 400 5.4cqi/1.02 var(--f-insegna); letter-spacing: .03em; }
+.cassonetto__modi span + span { margin-top: .16em; padding-top: .2em; border-top: .11em solid var(--blu); }
+.cassonetto__nome { display: block; margin-top: 1.6cqi; font: 400 9.3cqi/.98 var(--f-insegna); letter-spacing: .005em; }
+.cassonetto__sotto { display: block; margin-top: 2cqi; font: 400 max(.82rem, 3.55cqi)/1.2 var(--f-insegna); letter-spacing: .035em; text-wrap: balance; }
+.facciata { display: grid; grid-template-columns: minmax(0, 1fr); gap: 30px; margin-top: 26px; align-items: start; }
+/* la vetrina: il vetro scuro e la cornice di tubo blu col filo bianco, aperta a destra */
+.vetrina { position: relative; padding: 46px 22px 44px 44px; background: var(--vetro); background-image: linear-gradient(115deg, rgba(255, 255, 255, .07) 0 18%, transparent 18% 34%, rgba(255, 255, 255, .04) 34% 41%, transparent 41%); color: #EAF1F7; border: 5px solid var(--alluminio); }
+.vetrina::before { content: ''; position: absolute; top: 16px; bottom: 16px; left: 16px; right: 0; border: 9px solid var(--tubo); border-right: 0; border-radius: 22px 0 0 22px; pointer-events: none; }
+.vetrina::after { content: ''; position: absolute; top: 19px; bottom: 19px; left: 19px; right: 0; border: 2px solid rgba(255, 255, 255, .85); border-right: 0; border-radius: 19px 0 0 19px; pointer-events: none; }
+.apertura__frase { max-width: 33em; margin: 0 0 22px; font-size: 1.14rem; line-height: 1.62; }
+/* stato e voto su righe loro: lo stato scritto dal JS è più lungo di quello statico (firma-posto) */
+.apertura__riga { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.voto { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; margin: 0; }
+.voto__n { font: 400 2.5rem/1 var(--f-insegna); color: var(--blu-vetro); }
+.stato { display: inline-flex; align-items: center; gap: 8px; margin: 0; font: 700 1.02rem/1.4 var(--f-testo); }
+.stato::before { content: ''; width: 10px; height: 10px; border-radius: 50%; background: currentColor; opacity: .5; flex: none; }
+.stato.is-aperto::before { opacity: 1; background: #46C36F; box-shadow: 0 0 0 3px rgba(70, 195, 111, .28); }
+.apertura__azioni { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.bottone { display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center; max-width: 100%; min-height: 52px; padding: 2px 22px 0; border: 3px solid var(--blu); border-radius: 6px; background: transparent; color: var(--blu); font: 400 1.12rem/1.1 var(--f-insegna); letter-spacing: .05em; text-transform: uppercase; text-align: center; text-decoration: none; cursor: pointer; transition: background .15s, color .15s; }
+.bottone--pieno { background: var(--blu); color: #FFFFFF; }
+.bottone--pieno:hover { background: var(--blu-scuro); border-color: var(--blu-scuro); }
+.bottone--vuoto:hover { background: var(--blu); color: #FFFFFF; }
+.bottone--giallo { border-color: var(--giallo); background: var(--giallo); color: var(--nero); }
+.bottone--giallo:hover { background: #FFE64D; border-color: #FFE64D; }
+.bottone--vetro { border-color: #FFFFFF; color: #FFFFFF; }
+.bottone--vetro:hover { background: #FFFFFF; color: var(--vetro); }
+
+/* ── il cartellino giallo «Tintoria - Lavanderia GOBBI» ── */
+.cartellino { position: relative; padding: 20px 20px 18px; background: var(--giallo); color: var(--nero); text-align: center; font: 400 1rem/1.5 var(--f-testo); box-shadow: 0 12px 22px rgba(30, 30, 20, .3); }
+.cartellino a { color: var(--nero); }
+.cartellino__sopra { margin: 0; font: 700 1.1rem/1.2 var(--f-testo); }
+.cartellino__nome { margin: 2px 0 0; padding-left: .2em; font: 700 2.7rem/1 var(--f-testo); letter-spacing: .2em; text-transform: uppercase; -webkit-text-stroke: .034em currentColor; }
+.cartellino__filetto { position: relative; display: block; height: 2px; margin: 13px 4px; background: var(--nero); }
+.cartellino__filetto::after { content: ''; position: absolute; left: 50%; top: -2px; width: 16%; height: 6px; transform: translateX(-50%); background: var(--nero); }
+.cartellino__punti { margin: 0; padding: 0; list-style: none; }
+.cartellino__punti li { padding: 1px 0; }
+.cartellino__punti li::before { content: '• '; }
+.cartellino__punti a { text-decoration: none; border-bottom: 1px solid rgba(23, 21, 15, .45); }
+.cartellino__punti a:hover { border-bottom-color: var(--nero); }
+.cartellino__via { margin: 0; font: 700 1.04rem/1.5 var(--f-testo); letter-spacing: .05em; }
+.cartellino--porta { justify-self: center; width: min(100%, 300px); transform: rotate(-2deg); }
+/* il nastro adesivo che lo tiene al muro */
+.cartellino--porta::before { content: ''; position: absolute; left: 50%; top: -11px; width: 86px; height: 24px; transform: translateX(-50%) rotate(1.5deg); background: rgba(255, 255, 255, .55); box-shadow: 0 1px 2px rgba(0, 0, 0, .12); }
+
+/* ── i capitoli ── */
+.capitolo { position: relative; padding: 70px max(var(--gutter), calc((100% - 1160px) / 2)) 68px; background: var(--banco); }
+.capitolo__titolo { max-width: 16em; margin: 0 0 20px; font: 400 clamp(2.3rem, 1.5rem + 3.3vw, 4.1rem)/1.03 var(--f-insegna); letter-spacing: .005em; text-transform: uppercase; color: var(--blu); text-wrap: balance; }
+.capitolo__intro { max-width: 40em; margin: 0 0 18px; font-size: 1.1rem; }
+/* le stoffe: tagliate a zigzag sopra e sotto, come i campioni di tessuto */
+.capitolo--stoffa::before, .capitolo--stoffa::after { content: ''; position: absolute; left: 0; right: 0; height: 10px; pointer-events: none; }
+.capitolo--stoffa::before { top: -10px; background: conic-gradient(from 135deg at 50% 0, var(--stoffa) 90deg, transparent 0) 0 0 / 20px 10px repeat-x; }
+.capitolo--stoffa::after { bottom: -10px; z-index: 1; background: conic-gradient(from -45deg at 50% 100%, var(--stoffa) 90deg, transparent 0) 0 0 / 20px 10px repeat-x; }
+.capitolo--galles + .capitolo--lino::before { display: none; }
+.capitolo--galles { --stoffa: var(--galles); background-color: var(--galles); background-image: repeating-linear-gradient(0deg, transparent 0 92px, rgba(134, 160, 222, .3) 92px 96px), repeating-linear-gradient(90deg, transparent 0 92px, rgba(134, 160, 222, .3) 92px 96px), repeating-linear-gradient(0deg, rgba(255, 255, 255, .035) 0 2px, transparent 2px 4px), repeating-linear-gradient(90deg, rgba(0, 0, 0, .1) 0 2px, transparent 2px 4px); color: #E6E9EF; }
+.capitolo--galles .capitolo__titolo { color: var(--filo); }
+.capitolo--lino { --stoffa: var(--lino); background-color: var(--lino); background-image: repeating-linear-gradient(0deg, rgba(255, 255, 255, .09) 0 1px, transparent 1px 3px), repeating-linear-gradient(90deg, rgba(110, 20, 0, .1) 0 1px, transparent 1px 3px); color: #2A1009; }
+.capitolo--lino .capitolo__titolo { color: #FFFFFF; }
+.capitolo--lino a { color: #2A1009; }
+.capitolo--camicia { --stoffa: var(--camicia); background-color: var(--camicia); background-image: repeating-linear-gradient(90deg, transparent 0 22px, rgba(255, 255, 255, .8) 22px 24px); }
+.capitolo--vetro { background: var(--vetro); background-image: linear-gradient(115deg, rgba(255, 255, 255, .06) 0 12%, transparent 12% 26%, rgba(255, 255, 255, .035) 26% 31%, transparent 31%); color: #EAF1F7; }
+.capitolo--vetro .capitolo__titolo { color: #FFFFFF; }
+.capitolo--pietra { background-color: var(--pietra); background-image: var(--muro); }
+.capitolo--pietra .capitolo__titolo { color: var(--blu-scuro); }
+.capitolo--banco { background: var(--banco); }
+
+/* rammendi invisibili: il testo, la firma, le foto dei lavori */
+.rammendo { display: grid; gap: 34px; align-items: center; }
+.frase-cliente { max-width: 30em; margin: 26px 0 0; padding: 4px 0 4px 20px; border-left: 4px dashed var(--filo); }
+.frase-cliente p { margin: 0; font: 700 1.5rem/1.35 var(--f-testo); color: #FFFFFF; }
+.frase-cliente footer { margin-top: 8px; font-size: 1rem; color: #C9CEDA; }
+.rammendo-fig { margin: 0; -webkit-user-select: none; user-select: none; }
+.rammendo-fig > svg { max-width: 560px; margin: 0 auto; box-shadow: 0 16px 30px rgba(0, 0, 0, .35); }
+.rammendo__didascalia { max-width: 34em; min-height: 4.8em; margin: 16px auto 0; font-size: 1rem; line-height: 1.55; text-align: center; color: #D5D9E2; }
+.rammendo__d { display: none; }
+.rammendo-fig[data-modo="0"] .rammendo__d[data-m="0"], .rammendo-fig[data-modo="1"] .rammendo__d[data-m="1"] { display: inline; }
+.rammendo__modi { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 10px; }
+.rammendo__modi button { min-height: 48px; padding: 2px 26px 0; border: 3px solid var(--filo); border-radius: 6px; background: transparent; color: var(--filo); font: 400 1.12rem/1 var(--f-insegna); letter-spacing: .06em; text-transform: uppercase; cursor: pointer; }
+.rammendo__modi button:hover { background: rgba(247, 244, 234, .14); }
+.rammendo__modi button[aria-pressed="true"] { border-color: var(--giallo); background: var(--giallo); color: var(--nero); }
+/* senza JS il modo non cambia: i bottoni restano nascosti col loro posto (#240) */
+.no-js .rammendo__modi { visibility: hidden; }
+
+/* le foto: dentro un riquadro di imbastitura bianca */
+.foto { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.foto img { display: block; width: 100%; height: auto; }
+.imbastita { padding: 11px; border: 3px dashed var(--filo); border-radius: 3px; }
+.imbastita img { aspect-ratio: 1 / 1; height: auto; object-fit: cover; }
+figcaption { margin-top: 10px; font-size: 1rem; line-height: 1.45; }
+.lavori, .iniziali { display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px; margin: 46px 0 0; padding: 0; list-style: none; }
+.lavori figcaption { color: #D5D9E2; }
+.iniziali { margin-top: 30px; }
+
+/* lavaggio: il vetro, il tubo blu e l'elenco in lettere bianche */
+.lavaggio { display: grid; gap: 34px; align-items: center; }
+.tubo { position: relative; padding: 34px 20px 34px 40px; border: 9px solid var(--tubo); border-right: 0; border-radius: 24px 0 0 24px; }
+.tubo::before { content: ''; position: absolute; inset: -6px 0 -6px -6px; border: 2px solid rgba(255, 255, 255, .85); border-right: 0; border-radius: 20px 0 0 20px; pointer-events: none; }
+.tubo__capi { margin: 0; padding: 0; list-style: none; font: 400 1.38rem/1.3 var(--f-insegna); letter-spacing: .035em; text-transform: uppercase; color: #FFFFFF; }
+.tubo__capi li { padding: 2px 0; overflow-wrap: anywhere; }
+.tubo__pulitura { margin: 22px 0 4px; font: 400 1rem/1.3 var(--f-insegna); letter-spacing: .1em; text-transform: uppercase; color: var(--blu-vetro); }
+
+/* sartoria e domicilio: due voci sul banco, divise dall'imbastitura */
+.due { display: grid; gap: 0; }
+.due__voce { padding: 22px 0 20px; border-top: 3px dashed #9DB6D0; }
+.due__voce h3 { margin: 0 0 8px; font: 400 1.55rem/1.1 var(--f-insegna); letter-spacing: .02em; text-transform: uppercase; color: var(--blu); }
+.due__voce p { max-width: 34em; margin: 0; }
+
+/* recensioni: sull'azzurro a righe, cucite col filo blu */
+.voto--sezione { margin: 0 0 26px; }
+.capitolo--camicia .voto__n { color: var(--blu); }
+.recensioni { display: grid; gap: 18px; margin: 0; padding: 0; list-style: none; }
+.recensione { margin: 0; padding: 20px 20px 16px; background: #FFFFFF; color: var(--inchiostro); border: 3px dashed var(--blu); border-radius: 4px; }
+.recensione__testo { margin: 0; font-size: 1.02rem; line-height: 1.62; overflow-wrap: anywhere; }
+.recensione__chi { margin: 12px 0 0; font-size: 1rem; line-height: 1.4; color: var(--grigio); }
+.recensione__chi b { display: block; font: 400 1.2rem/1.15 var(--f-insegna); letter-spacing: .04em; text-transform: uppercase; color: var(--blu); }
+.recensioni__nota { max-width: 48em; margin: 24px 0 0; font-size: 1rem; }
+
+/* orari e strada: il cartellino grande, i mezzi, la mappa */
+.orari-riga { display: grid; gap: 34px; align-items: start; }
+.cartellino--grande { max-width: 440px; padding: 26px 22px 22px; }
+.cartellino--grande .cartellino__nome { font-size: 3.2rem; }
+.cartellino__orario { margin: 0 0 6px; font: 700 1.05rem/1.3 var(--f-testo); letter-spacing: .12em; text-transform: uppercase; }
+.orario__giorni { text-align: left; }
+.giorno { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 10px; padding: 6px 8px 5px; border-bottom: 1px dashed rgba(23, 21, 15, .45); }
+.giorno:last-child { border-bottom: 0; }
+.giorno__ore { margin-left: auto; white-space: nowrap; }
+.giorno.is-today { background: rgba(23, 21, 15, .13); font-weight: 700; }
+.stato--orari { margin-top: 12px; }
+.cartellino .stato.is-aperto::before { background: var(--aperto); box-shadow: 0 0 0 3px rgba(46, 139, 78, .3); }
+.indirizzo { margin: 0 0 22px; }
+.indirizzo div { display: grid; grid-template-columns: 7.2em minmax(0, 1fr); gap: 10px; padding: 10px 0 8px; border-bottom: 1px solid #A9AFB5; }
+.indirizzo dt { font: 400 1.02rem/1.6 var(--f-insegna); letter-spacing: .06em; text-transform: uppercase; color: var(--blu-scuro); }
+.indirizzo dd { margin: 0; overflow-wrap: anywhere; }
+.dove__azioni { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; }
+.orari__nota { margin: 18px 0 0; font-size: 1rem; color: #3D434A; }
+.cartina { margin-top: 38px; overflow: hidden; background: #FFFFFF; color: var(--inchiostro); border: 5px solid var(--alluminio); }
+.cartina a { color: var(--inchiostro); }
+.cartina iframe { display: block; width: 100%; height: 380px; border: 0; }
+/* la nota della mappa a 16 px: sotto i 15 px gli accenti piccoli si perdono (accenti-check, #306) */
+.cartina .mappa-clic__nota { font-size: 1rem; }
+
+/* le domande */
+.domande { max-width: 800px; border-top: 3px dashed #9DB6D0; }
+.domanda { border-bottom: 3px dashed #9DB6D0; }
+.domanda summary { position: relative; padding: 16px 38px 13px 2px; font: 700 1.16rem/1.35 var(--f-testo); color: var(--blu-scuro); cursor: pointer; list-style: none; }
+.domanda summary::-webkit-details-marker { display: none; }
+.domanda summary::after { content: '+'; position: absolute; right: 6px; top: 12px; font: 400 1.7rem/1 Arial, sans-serif; color: var(--blu); }
+.domanda[open] summary::after { content: '−'; }
+.domanda p { max-width: 40em; margin: 0 0 18px; }
+
+/* ── la chiusura: il blu dell'insegna ── */
+.piede { background: var(--blu-scuro); color: #DCE8F4; }
+.piede__dentro { max-width: 900px; margin: 0 auto; padding: 50px var(--gutter) 104px; text-align: center; }
+.piede__insegna { display: inline-flex; flex-direction: column; max-width: 100%; margin: 0 0 20px; }
+.piede__insegna .insegna__sopra { font-size: 1.1rem; color: #FFFFFF; }
+.piede__insegna .insegna__nome { font-size: clamp(1.7rem, 1.1rem + 3vw, 2.6rem); color: #FFFFFF; overflow-wrap: anywhere; }
+.piede__dove, .piede__orario { margin: 0 0 8px; overflow-wrap: anywhere; }
+.piede a { color: #FFFFFF; }
+.piede__cred { max-width: 54em; margin: 18px auto 10px; font-size: 1rem; }
+.freccia { font-family: Arial, sans-serif; }
+
+/* ── reveal (plumbing) ── */
+.js .reveal { opacity: 0; }
+.js .reveal.in-view { opacity: 1; }
+html:not(.js) .reveal { opacity: 1; }
+.reduced-motion .reveal { opacity: 1 !important; }
+
+/* ── la barra e la lightbox ── */
+.action-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); background: var(--blu-scuro); box-shadow: 0 -3px 0 var(--alluminio); transform: translateY(110%); transition: transform .25s; }
+.action-bar.is-visible { transform: translateY(0); }
+.action-bar a { display: flex; align-items: center; justify-content: center; min-width: 0; min-height: 54px; padding: 2px 4px 0; overflow-wrap: anywhere; text-align: center; color: #FFFFFF; font: 400 1rem var(--f-insegna); letter-spacing: .05em; text-transform: uppercase; text-decoration: none; }
+.action-bar a:first-child { background: var(--giallo); color: var(--nero); }
+#lightbox { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; padding: 24px; background: rgba(12, 16, 22, .95); }
+#lightbox[hidden] { display: none !important; }
+#lightbox img { width: auto; max-width: min(1000px, 100%); max-height: 88vh; }
+#lightboxClose { position: absolute; top: 14px; right: 16px; width: 48px; height: 48px; border: 1px solid rgba(255, 255, 255, .6); border-radius: 50%; background: transparent; color: #fff; font-size: 32px; line-height: 1; cursor: pointer; }
+
+/* ── le larghezze ── */
+@media (max-width: 379px) {
+  .testata__dentro { gap: 6px; }
+  .lingue button { min-width: 31px; }
+  .bottone { padding: 2px 14px 0; }
+  .indirizzo div { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .vetrina { padding: 42px 16px 40px 38px; }
+  .cartellino__nome { font-size: 2.3rem; }
+  .cartellino--grande .cartellino__nome { font-size: 2.5rem; }
+  .tubo { padding-left: 28px; }
+  .tubo__capi { font-size: 1.2rem; }
+}
+@media (min-width: 560px) {
+  .chiama { display: inline-flex; }
+  .lavori, .iniziali { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .tubo__capi:not(.tubo__capi--pulitura) { columns: 2; column-gap: 26px; }
+  .due { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 40px; }
+}
+@media (min-width: 760px) {
+  .action-bar { display: none; }
+  .piede__dentro { padding-bottom: 56px; }
+  .recensioni { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+  .vetrina { padding: 56px 34px 54px 60px; }
+  .lavori, .iniziali { gap: 30px; }
+}
+@media (min-width: 960px) {
+  .apertura__dentro { padding: 34px var(--gutter) 64px; }
+  /* la vetrina e il cartellino affiancati solo da qui: a 768 la vetrina restava in 340 px (2/10) */
+  .facciata { grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; align-items: center; }
+  .rammendo { grid-template-columns: minmax(0, .82fr) minmax(0, 560px); gap: 56px; }
+  .lavaggio { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 60px; }
+  .recensioni { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .orari-riga { grid-template-columns: minmax(0, 440px) minmax(0, 1fr); gap: 60px; }
+}
+@media (min-width: 1100px) {
+  .testata__dentro { gap: 16px; }
+  .voci { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-left: 26px; }
+  .voci a { padding: 5px 1px 2px; color: var(--blu); font: 400 1rem var(--f-insegna); letter-spacing: .06em; text-transform: uppercase; text-decoration: none; white-space: nowrap; }
+  .voci a:hover, .voci a[aria-current="true"] { color: var(--blu-scuro); text-decoration: underline; text-decoration-style: dashed; text-decoration-thickness: 3px; text-underline-offset: 7px; }
+  .burger { display: none; }
+}
+
+/*RAMMENDO*/
+/* il rammendo — generato da _lri_firma.mjs: non modificare a mano */
+.rammendo__svg { display: block; width: 100%; height: auto; overflow: hidden; }
+.rm-banco { fill: #EFECE4; }
+.rm-ombra { fill: rgba(60, 52, 38, .22); }
+.rm-t-fondo { fill: #272B33; }
+.rm-t-trama { fill: #383D49; }
+.rm-t-ordito { fill: #434957; }
+.rm-t-riga { fill: rgba(134, 160, 222, .36); }
+.rm-m-fondo { fill: #A32463; }
+.rm-m-punto { fill: none; stroke: #CB3B86; stroke-width: 5.2; stroke-linecap: round; stroke-linejoin: round; }
+.rm-buco { fill: #CFCABE; stroke-width: 2; stroke-linejoin: round; }
+.rm-buco--tela { stroke: #1D2027; }
+.rm-buco--maglia { stroke: #7C1A4B; }
+.rm-sfilacci { fill: none; stroke: #434957; stroke-width: 2; stroke-linecap: round; }
+.rm-scala { fill: none; stroke: #CB3B86; stroke-width: 1.8; }
+.rm-filo { fill: none; stroke-width: 8; }
+.rm-filo--ordito { stroke: #5C6375; }
+.rm-filo--trama { stroke: #4C5262; }
+.rm-filo--riga { stroke: #8296C4; }
+.rm-filo--maglia { stroke: #E564A3; stroke-width: 5.2; stroke-linecap: round; }
+.rm-imb { fill: none; stroke: #F7F4EA; stroke-width: 4.4; stroke-linecap: round; }
+.rm-imb--coda { stroke-width: 3; }
+.rm-spilla-filo { fill: none; stroke: #C29A1B; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+.rm-spilla-testa { fill: #E0BC42; stroke: #A9840F; stroke-width: 1.5; }
+.rm-ago-coda { fill: none; stroke-width: 2.6; stroke-linecap: round; }
+.rm-ago--tessuto .rm-ago-coda { stroke: #8FA7D8; }
+.rm-ago--maglia .rm-ago-coda { stroke: #F3A6CC; }
+.rm-ago-bordo { fill: none; stroke: #3F464F; stroke-width: 6.4; stroke-linecap: round; }
+.rm-ago-corpo { fill: none; stroke: #E9EDF1; stroke-width: 3.6; stroke-linecap: round; }
+.rm-ago-cruna { fill: none; stroke: #3F464F; stroke-width: 1.6; stroke-linecap: round; }
+.rm-cart-spago { fill: none; stroke: #8A8371; stroke-width: 1.6; }
+.rm-cart-carta { fill: #F1D51F; stroke: #B9A30F; stroke-width: 1.2; }
+.rm-cart-foro { fill: #EFECE4; stroke: #B9A30F; stroke-width: 1.2; }
+.rm-cart-filetto { fill: none; stroke: #17150F; stroke-width: 1.4; }
+.rm-cart-nome { fill: #17150F; font: 700 19px 'Glegoo', Georgia, serif; letter-spacing: 2.5px; }
+.rammendo-fig[data-modo="0"] .modo:not([data-m="0"]) { display: none; }
+.rammendo-fig[data-modo="1"] .modo:not([data-m="1"]) { display: none; }
+.firma-attesa .rm-filo, .firma-attesa .rm-toppa, .firma-attesa .rm-spilla { opacity: 0; }
+/*/RAMMENDO*/
+
+/*MAPPACLIC*/
+/* la mappa Google si carica solo al clic (giro privacy 1/10/2026) */
+.mappa-clic { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; min-height: var(--mappa-h, 320px); box-sizing: border-box; padding: 24px; text-align: center; background: repeating-linear-gradient(0deg, rgba(127, 127, 127, 0.14) 0 1px, transparent 1px 28px), repeating-linear-gradient(90deg, rgba(127, 127, 127, 0.14) 0 1px, transparent 1px 28px); }
+.mappa-clic__velo { display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: 32em; }
+.mappa-clic__btn { display: inline-block; padding: 0.75em 1.4em; border: 2px solid currentColor; border-radius: 999px; color: inherit; font: inherit; font-weight: 600; line-height: 1.2; text-decoration: none; background: transparent; cursor: pointer; }
+.mappa-clic__btn:hover, .mappa-clic__btn:focus-visible { text-decoration: underline; }
+.mappa-clic__nota { margin: 0; font-size: 0.85em; line-height: 1.45; }
+/*/MAPPACLIC*/
